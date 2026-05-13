@@ -1,11 +1,6 @@
-from services.preprocessor import pre_process
-from services.ocr_service import ocr_service
-from services.extractor import extract
+from fastapi import FastAPI
+from api import routes
 
-image_path = 'samples/documento.png'
+app = FastAPI()
 
-pre_processment = pre_process(image_path)
-
-ocr = ocr_service(pre_processment)
-
-print(extract(ocr))
+app.include_router(routes.router)
